@@ -2,8 +2,11 @@ package br.com.hallisonoliveira.webservice_ex3.di
 
 import br.com.hallisonoliveira.webservice_ex3.api.ShoppingApi
 import br.com.hallisonoliveira.webservice_ex3.interactor.DeleteShoppingInteractor
+import br.com.hallisonoliveira.webservice_ex3.interactor.GetShoppingInteractor
 import br.com.hallisonoliveira.webservice_ex3.interactor.ListShoppingInteractor
+import br.com.hallisonoliveira.webservice_ex3.interactor.SaveShoppingInteractor
 import br.com.hallisonoliveira.webservice_ex3.repository.ShoppingRepository
+import br.com.hallisonoliveira.webservice_ex3.ui.AddEditShoppingViewModel
 import br.com.hallisonoliveira.webservice_ex3.ui.list.ListViewModel
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -22,12 +25,27 @@ val androidModule = module {
         )
     }
 
+    viewModel {
+        AddEditShoppingViewModel(
+            getShoppingInteractor = get(),
+            saveShoppingInteractor = get()
+        )
+    }
+
     factory {
         ListShoppingInteractor(repository = get())
     }
 
     factory {
+        GetShoppingInteractor(repository = get())
+    }
+
+    factory {
         DeleteShoppingInteractor(repository = get())
+    }
+
+    factory {
+        SaveShoppingInteractor(repository = get())
     }
 
     factory {

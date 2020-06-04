@@ -12,3 +12,13 @@ fun ShoppingRemote.toDomain() : Shopping {
         shelfLife = shelfLife
     )
 }
+
+fun Shopping.toRemote() : ShoppingRemote {
+    return ShoppingRemote(
+        id = id ?: "",
+        name = name,
+        amount = amount,
+        brand = brand,
+        shelfLife = shelfLife
+    )
+}

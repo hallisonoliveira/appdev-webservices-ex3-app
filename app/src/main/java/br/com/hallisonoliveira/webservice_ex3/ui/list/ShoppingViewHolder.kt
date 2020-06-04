@@ -7,7 +7,7 @@ import kotlinx.android.synthetic.main.item_product.view.*
 
 class ShoppingViewHolder(
     itemView: View,
-    private val onItemClick: (Shopping) -> Unit,
+    private val onItemClick: (String) -> Unit,
     private val onDeleteClick: (String) -> Unit
 ) : RecyclerView.ViewHolder(itemView) {
 
@@ -18,11 +18,11 @@ class ShoppingViewHolder(
         itemView.shelflifeTextView.text = item.shelfLife
 
         itemView.deleteButton.setOnClickListener {
-            it.run { onDeleteClick.invoke(item.id) }
+            it.run { onDeleteClick.invoke(item.id!!) }
         }
 
         itemView.setOnClickListener {
-            it.run { onItemClick.invoke(item) }
+            it.run { onItemClick.invoke(item.id!!) }
         }
     }
 

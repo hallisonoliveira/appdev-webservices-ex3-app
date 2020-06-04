@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">webservice-ex3</string>
+
+    <string name="shopping_name">Nome</string>
+    <string name="shopping_brand">Marca</string>
+    <string name="shopping_amount">Quantidade</string>
+    <string name="shopping_shelflife">Validade</string>
+
+    <string name="save">Salvar</string>
+
 </resources>

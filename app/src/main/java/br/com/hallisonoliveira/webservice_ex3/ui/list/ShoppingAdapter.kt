@@ -8,7 +8,7 @@ import br.com.hallisonoliveira.webservice_ex3.R
 import br.com.hallisonoliveira.webservice_ex3.model.domain.Shopping
 
 class ShoppingAdapter (
-    private val onItemClick: (Shopping) -> Unit,
+    private val onItemClick: (String) -> Unit,
     private val onDeleteItemClick: (String) -> Unit
 ) : ListAdapter<Shopping, ShoppingViewHolder>(DIFF_UTIL_CALLBACK) {
 

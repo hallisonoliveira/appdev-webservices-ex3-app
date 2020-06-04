@@ -9,7 +9,22 @@
         android:id="@+id/fragmentList"
         android:name="br.com.hallisonoliveira.webservice_ex3.ui.list.ListFragment"
         android:label="FragmentList"
-        tools:layout="@layout/fragment_list"/>
+        tools:layout="@layout/fragment_list">
+        <action
+            android:id="@+id/action_fragmentList_to_addEditShoppingFragment"
+            app:destination="@id/addEditShoppingFragment"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:launchSingleTop="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditShoppingFragment"
+        android:name="br.com.hallisonoliveira.webservice_ex3.ui.AddEditShoppingFragment"
+        android:label="AddEditShoppingFragment" >
+        <argument
+            android:name="shoppingId"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
 
 
 </navigation>

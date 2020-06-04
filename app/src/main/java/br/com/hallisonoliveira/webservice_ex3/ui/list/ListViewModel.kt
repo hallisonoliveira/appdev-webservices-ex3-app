@@ -13,8 +13,6 @@ class ListViewModel(
     private val deleteShoppingInteractor: DeleteShoppingInteractor
 ) : ViewModel() {
 
-
-
     val listLiveData = MutableLiveData<List<Shopping>>()
 
     fun list() {

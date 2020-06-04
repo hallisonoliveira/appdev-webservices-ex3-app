@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import br.com.hallisonoliveira.webservice_ex3.R
 import br.com.hallisonoliveira.webservice_ex3.model.domain.Shopping
@@ -29,12 +31,17 @@ class ListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = ShoppingAdapter(
-            ::onItemclick,
+            ::onItemClick,
             ::onDeleteClick
         )
-
-
         productsList.adapter = adapter
+
+        addButton.setOnClickListener {
+            findNavController().navigate(
+                ListFragmentDirections
+                    .actionFragmentListToAddEditShoppingFragment(null)
+            )
+        }
 
         viewModel.list()
         setObservers()
@@ -46,8 +53,10 @@ class ListFragment : Fragment() {
         })
     }
 
-    private fun onItemclick(shopping: Shopping) {
-        Log.d("TAG", "${shopping.name}")
+    private fun onItemClick(shoppingId: String) {
+        findNavController().navigate(
+            ListFragmentDirections.actionFragmentListToAddEditShoppingFragment(shoppingId)
+        )
     }
 
     private fun onDeleteClick(id: String) {
